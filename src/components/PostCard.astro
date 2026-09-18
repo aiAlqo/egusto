@@ -1,0 +1,36 @@
+---
+import type { CollectionEntry } from 'astro:content';
+import TagPill from './TagPill.astro';
+
+interface Props {
+  post: CollectionEntry<'posts'>;
+}
+
+const { post } = Astro.props;
+const dateStr = post.data.date.toLocaleDateString('en-US', {
+  year: 'numeric',
+  month: 'short',
+  day: 'numeric',
+});
+---
+
+<a href={`/posts/${post.id}`} class="card fade-in group block">
+  {post.data.cover && (
+    <img
+      src={post.data.cover}
+      alt=""
+      class="mb-4 aspect-video w-full rounded-xl object-cover"
+      loading="lazy"
+    />
+  )}
+  <h2 class="text-lg font-semibold text-claude-cream group-hover:text-claude-accent-hover">
+    {post.data.title}
+  </h2>
+  <p class="mt-2 text-sm text-claude-muted">{post.data.description}</p>
+  <div class="mt-4 flex items-center justify-between text-xs text-claude-muted">
+    <span>{dateStr}</span>
+    <div class="flex gap-2">
+      {post.data.tags.slice(0, 3).map((tag) => <TagPill tag={tag} />)}
+    </div>
+  </div>
+</a>

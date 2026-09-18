@@ -1,0 +1,44 @@
+---
+import type { CollectionEntry } from 'astro:content';
+
+interface Props {
+  product: CollectionEntry<'products'>;
+}
+
+const { product } = Astro.props;
+const { title, description, price, image, downloadUrl, buyLink } = product.data;
+---
+
+<div class="card fade-in flex flex-col">
+  {image && (
+    <img
+      src={image}
+      alt=""
+      class="mb-4 aspect-video w-full rounded-xl object-cover"
+      loading="lazy"
+    />
+  )}
+  <h2 class="text-lg font-semibold text-claude-cream">{title}</h2>
+  <p class="mt-2 flex-1 text-sm text-claude-muted">{description}</p>
+  <div class="mt-6 flex items-center justify-between">
+    <span class="text-sm font-medium text-claude-cream">{price}</span>
+    {downloadUrl ? (
+      <a
+        href={downloadUrl}
+        download
+        class="rounded-full bg-claude-accent px-4 py-2 text-sm font-medium text-claude-dark transition hover:bg-claude-accent-hover"
+      >
+        Download
+      </a>
+    ) : buyLink ? (
+      <a
+        href={buyLink}
+        target="_blank"
+        rel="noopener"
+        class="rounded-full bg-claude-accent px-4 py-2 text-sm font-medium text-claude-dark transition hover:bg-claude-accent-hover"
+      >
+        Buy — {price}
+      </a>
+    ) : null}
+  </div>
+</div>

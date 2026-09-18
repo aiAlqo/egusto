@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" width="1200" height="630">
+  <rect width="1200" height="630" fill="#0F0F0E" />
+  <rect x="0" y="0" width="1200" height="630" fill="#1A1A18" opacity="0.4" />
+  <circle cx="980" cy="150" r="260" fill="#D97757" opacity="0.18" />
+  <circle cx="220" cy="520" r="180" fill="#D97757" opacity="0.12" />
+  <text x="90" y="330" font-family="Arial, sans-serif" font-size="56" font-weight="600" fill="#F5F4EF">
+    Turning Client Work
+  </text>
+  <text x="90" y="400" font-family="Arial, sans-serif" font-size="56" font-weight="600" fill="#F5F4EF">
+    Into Claude Skills
+  </text>
+  <text x="90" y="460" font-family="Arial, sans-serif" font-size="24" fill="#D97757">
+    egusto — applied AI notes
+  </text>
+</svg>

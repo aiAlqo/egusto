@@ -1,0 +1,86 @@
+@import "tailwindcss";
+@import "@fontsource-variable/inter";
+
+@theme {
+  --color-claude-dark: #0f0f0e;
+  --color-claude-dark-alt: #1a1a18;
+  --color-claude-surface: #1f1f1d;
+  --color-claude-cream: #f5f4ef;
+  --color-claude-muted: #a8a29e;
+  --color-claude-accent: #d97757;
+  --color-claude-accent-hover: #e68b6f;
+
+  --font-sans: "Inter Variable", ui-sans-serif, system-ui, sans-serif;
+}
+
+@layer base {
+  body {
+    @apply bg-claude-dark text-claude-cream font-sans antialiased;
+  }
+
+  ::selection {
+    @apply bg-claude-accent/30 text-claude-cream;
+  }
+}
+
+@layer components {
+  .card {
+    @apply rounded-2xl border border-white/5 bg-claude-surface p-6 transition duration-300;
+  }
+
+  .card:hover {
+    @apply -translate-y-0.5 shadow-[0_0_24px_-6px_rgba(217,119,87,0.35)];
+  }
+
+  .fade-in {
+    animation: fade-in 0.6s ease-out both;
+  }
+
+  .prose-post {
+    @apply mx-auto max-w-[65ch] leading-relaxed text-claude-cream/90;
+  }
+
+  .prose-post :is(h2, h3) {
+    @apply mt-10 mb-4 font-semibold text-claude-cream;
+  }
+
+  .prose-post p {
+    @apply mb-5;
+  }
+
+  .prose-post ul,
+  .prose-post ol {
+    @apply mb-5 ml-6 list-outside space-y-2;
+  }
+
+  .prose-post ul {
+    @apply list-disc;
+  }
+
+  .prose-post ol {
+    @apply list-decimal;
+  }
+
+  .prose-post a {
+    @apply text-claude-accent underline underline-offset-2 hover:text-claude-accent-hover;
+  }
+
+  .prose-post code {
+    @apply rounded bg-claude-dark-alt px-1.5 py-0.5 text-sm;
+  }
+
+  .prose-post strong {
+    @apply text-claude-cream;
+  }
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

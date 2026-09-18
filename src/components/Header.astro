@@ -1,0 +1,32 @@
+---
+const navItems = [
+  { href: '/', label: 'Home' },
+  { href: '/store', label: 'Store' },
+  { href: '/about', label: 'About' },
+];
+
+const currentPath = Astro.url.pathname;
+---
+
+<header class="border-b border-white/5">
+  <div class="mx-auto flex max-w-5xl items-center justify-between px-4 py-5">
+    <a href="/" class="text-lg font-semibold tracking-tight text-claude-cream">
+      egusto
+    </a>
+    <nav class="flex gap-6 text-sm">
+      {navItems.map((item) => {
+        const isActive = item.href === '/' ? currentPath === '/' : currentPath.startsWith(item.href);
+        return (
+          <a
+            href={item.href}
+            class={`transition hover:text-claude-accent-hover ${
+              isActive ? 'text-claude-accent' : 'text-claude-muted'
+            }`}
+          >
+            {item.label}
+          </a>
+        );
+      })}
+    </nav>
+  </div>
+</header>
