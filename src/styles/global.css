@@ -72,6 +72,10 @@
   .prose-post strong {
     @apply text-claude-cream;
   }
+
+  summary::-webkit-details-marker {
+    display: none;
+  }
 }
 
 @keyframes fade-in {

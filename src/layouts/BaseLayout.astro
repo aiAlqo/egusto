@@ -23,6 +23,7 @@ const canonicalUrl = new URL(Astro.url.pathname, Astro.site).toString();
     <link rel="apple-touch-icon" href="/brand/app-icon.png" />
     <meta name="description" content={description} />
     <meta name="generator" content={Astro.generator} />
+    <link rel="canonical" href={canonicalUrl} />
     <title>{pageTitle}</title>
 
     <meta property="og:type" content="website" />
