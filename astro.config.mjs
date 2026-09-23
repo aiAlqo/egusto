@@ -8,7 +8,7 @@ import sitemap from '@astrojs/sitemap';
 // https://astro.build/config
 export default defineConfig({
   output: 'static',
-  site: 'https://egusto.asseneka.workers.dev',
+  site: 'https://egusto.online',
 
   vite: {
     plugins: [tailwindcss()]

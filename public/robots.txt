@@ -26,4 +26,4 @@ Allow: /
 User-agent: CCBot
 Allow: /
 
-Sitemap: https://egusto.asseneka.workers.dev/sitemap-index.xml
+Sitemap: https://egusto.online/sitemap-index.xml
