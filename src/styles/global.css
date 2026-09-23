@@ -69,6 +69,31 @@
     @apply rounded bg-claude-dark-alt px-1.5 py-0.5 text-sm;
   }
 
+  .prose-post pre {
+    @apply mb-5 overflow-x-auto rounded-xl border border-white/5 bg-claude-dark-alt p-4 text-sm leading-relaxed;
+  }
+
+  .prose-post pre code {
+    @apply bg-transparent p-0;
+  }
+
+  .prose-post img {
+    @apply my-8 w-full rounded-2xl border border-white/5;
+  }
+
+  .prose-post table {
+    @apply mb-5 block w-full overflow-x-auto border-collapse text-sm;
+  }
+
+  .prose-post th,
+  .prose-post td {
+    @apply border border-white/10 px-3 py-2 text-left align-top;
+  }
+
+  .prose-post th {
+    @apply bg-claude-dark-alt font-semibold text-claude-cream;
+  }
+
   .prose-post strong {
     @apply text-claude-cream;
   }
