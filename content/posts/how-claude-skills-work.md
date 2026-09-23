@@ -3,6 +3,7 @@ title: "How Claude Skills Work: Anthropic's Fix for AI's Memory Problem"
 description: "Claude Skills let Anthropic's Claude reuse instructions, templates, and scripts across conversations via progressive disclosure. Here's how SKILL.md files work, how they differ from MCP, and why teams use them."
 date: 2026-09-22
 tags: ["claude-skills", "anthropic-ai", "ai-agent-tools"]
+cover: "/images/posts/how-claude-skills-work-cover.jpg"
 draft: false
 ---
 
@@ -22,6 +23,8 @@ The folder can also hold example templates, reference documents, and even script
 
 The clever part isn't that Claude can read instructions — any AI can do that. It's *when* it reads them.
 
+![Three stages of progressive disclosure — a stack of folders, one folder opening to reveal a single glowing document, then a bound notebook with a gear, representing metadata, full instructions, and deeper bundled resources.](/images/posts/how-claude-skills-work-body-1.jpg)
+
 ## Progressive disclosure: loading only what's needed
 
 AI models have a limited context window — a cap on how much text they can attend to at once. Stuff every possible instruction for every possible task into every conversation, and you'd blow past that limit before Claude even starts working.
@@ -40,6 +43,8 @@ Normal AI text generation has some randomness built in — part of why it feels 
 
 Skills counter that in two ways. First, instructions are locked in and reused every time, rather than reconstructed from scratch. Second — and this is the sharper edge — Skills can bundle actual **scripts**, not just written guidance. A script is real code: it runs identically every single time, with no creative interpretation. Instead of asking Claude to "calculate this the way we usually do it" and hoping it remembers correctly, a Skill can run a script that calculates it the same way, guaranteed. Instructions handle judgment calls; code handles the parts that shouldn't involve any judgment at all.
 
+![A multi-plug adapter connecting to a database, cloud, folder, and server on one side, and a recipe book with a mixing-bowl illustration and checklist on the other — connectivity versus methodology.](/images/posts/how-claude-skills-work-body-2.jpg)
+
 ## Claude Skills vs. MCP: what's the difference?
 
 Skills are often confused with the Model Context Protocol (MCP), Anthropic's other major release. They solve different problems, and most serious workflows end up using both.
@@ -54,6 +59,8 @@ Put plainly: MCP gives Claude access to new things; Skills teach Claude how to d
 This isn't just theory. Rakuten reported using Skills to compress a day of finance and accounting workflow into about an hour, because Claude applied the company's own spreadsheet procedures automatically instead of being walked through them each time. Box, the file-storage company, uses Skills to let Claude pull files straight from company storage and turn them into PowerPoints, Excel sheets, and Word documents that already follow that company's formatting standards — no manual reformatting afterward.
 
 That's the real unlock: turning one person's know-how into something an AI applies automatically, at scale, for anyone on the team — not because the model got smarter overnight, but because someone wrote the recipe card once.
+
+![A person at a desk writing a card by lamplight, with a card-catalog box of filed notes in front of them and glowing documents drifting into the dark — writing the recipe card once, reused ever after.](/images/posts/how-claude-skills-work-body-end.jpg)
 
 ## The bigger idea
 
