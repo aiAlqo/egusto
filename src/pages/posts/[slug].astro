@@ -20,9 +20,37 @@ const dateStr = post.data.date.toLocaleDateString('en-US', {
   month: 'long',
   day: 'numeric',
 });
+
+const canonicalUrl = new URL(`/posts/${post.id}`, Astro.site).toString();
+const logoUrl = new URL('/brand/app-icon.png', Astro.site).toString();
+const imageUrl = new URL(
+  post.data.cover ?? '/brand/banner.jpg',
+  Astro.site
+).toString();
+
+const blogPostingSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'BlogPosting',
+  headline: post.data.title,
+  description: post.data.description,
+  datePublished: post.data.date.toISOString(),
+  dateModified: post.data.date.toISOString(),
+  image: imageUrl,
+  author: { '@type': 'Organization', name: 'egusto' },
+  publisher: {
+    '@type': 'Organization',
+    name: 'egusto',
+    logo: { '@type': 'ImageObject', url: logoUrl },
+  },
+  mainEntityOfPage: { '@type': 'WebPage', '@id': canonicalUrl },
+};
 ---
 
-<BaseLayout title={post.data.title} description={post.data.description}>
+<BaseLayout
+  title={post.data.title}
+  description={post.data.description}
+  structuredData={blogPostingSchema}
+>
   <article class="mx-auto max-w-3xl px-4 py-16">
     <header class="mb-10 text-center">
       <h1 class="text-3xl font-semibold text-claude-cream sm:text-4xl">{post.data.title}</h1>

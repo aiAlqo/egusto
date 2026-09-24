@@ -76,9 +76,14 @@ The site is set up to be indexed by search engines and discoverable by AI/LLM cr
 - **`public/robots.txt`** — allows all crawlers, with explicit entries for AI bots (GPTBot, ClaudeBot, PerplexityBot, Google-Extended, CCBot, etc.), and points to the sitemap.
 - **`sitemap-index.xml`** — auto-generated at build time via `@astrojs/sitemap`, listing every public page. No maintenance needed; it regenerates on every build.
 - **`llms.txt`** (`/llms.txt`) — a build-time-generated plain-text index of all posts and products, in the emerging `llms.txt` convention some AI crawlers/agents use to discover site content. Regenerates automatically from the content collections on every build — no manual upkeep.
-- **Canonical URLs + Open Graph/Twitter meta tags** — set on every page via `BaseLayout.astro`, using the `site` value in `astro.config.mjs`.
+- **`sitemap.xml`** (`/sitemap.xml`) — a static alias pointing to the same sitemap data as `sitemap-index.xml`, since some tools/crawlers check the conventional `/sitemap.xml` path specifically rather than reading it from `robots.txt`.
+- **Canonical URLs, Open Graph/Twitter meta tags, and JSON-LD structured data** (`Organization` site-wide, `BlogPosting` on post pages) — set via `BaseLayout.astro`, using the `site` value in `astro.config.mjs`.
 
-If the production domain ever changes, update `site` in `astro.config.mjs` — everything above (sitemap, canonical URLs, `llms.txt`, OG tags) derives from that one value.
+If the production domain ever changes, update `site` in `astro.config.mjs` — everything above (sitemap, canonical URLs, `llms.txt`, OG tags, structured data) derives from that one value.
+
+## Security headers
+
+`public/_headers` sets security headers (CSP, HSTS, X-Frame-Options, X-Content-Type-Options, Referrer-Policy, Permissions-Policy) using Cloudflare's static-hosting `_headers` file convention — Cloudflare applies these automatically to every response, no server code needed. If you add a new external resource (a script, font, or API call from a different origin), you'll need to widen the `Content-Security-Policy` directive in that file to allow it, or the browser will block it.
 
 ## Project structure
 

@@ -6,12 +6,26 @@ import Footer from '../components/Footer.astro';
 interface Props {
   title: string;
   description?: string;
+  structuredData?: Record<string, unknown>;
 }
 
-const { title, description = 'Notes on applied AI, tooling, and consulting.' } = Astro.props;
+const {
+  title,
+  description = 'Notes on applied AI, tooling, and consulting.',
+  structuredData,
+} = Astro.props;
 const pageTitle = title === 'Egusto' ? title : `${title} — Egusto`;
 const ogImage = new URL('/brand/banner.jpg', Astro.site).toString();
 const canonicalUrl = new URL(Astro.url.pathname, Astro.site).toString();
+const logoUrl = new URL('/brand/app-icon.png', Astro.site).toString();
+
+const organizationSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Organization',
+  name: 'egusto',
+  url: Astro.site?.toString(),
+  logo: logoUrl,
+};
 ---
 
 <!doctype html>
@@ -35,6 +49,11 @@ const canonicalUrl = new URL(Astro.url.pathname, Astro.site).toString();
     <meta name="twitter:title" content={pageTitle} />
     <meta name="twitter:description" content={description} />
     <meta name="twitter:image" content={ogImage} />
+
+    <script type="application/ld+json" set:html={JSON.stringify(organizationSchema)} is:inline></script>
+    {structuredData && (
+      <script type="application/ld+json" set:html={JSON.stringify(structuredData)} is:inline></script>
+    )}
   </head>
   <body class="flex min-h-screen flex-col">
     <Header />
