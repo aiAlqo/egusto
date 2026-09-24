@@ -3,6 +3,7 @@ import type { CollectionEntry } from 'astro:content';
 import { render } from 'astro:content';
 import TagPill from './TagPill.astro';
 import { extractSnippet } from '../lib/text';
+import { getResponsiveImage } from '../lib/image-dimensions';
 
 interface Props {
   post: CollectionEntry<'posts'>;
@@ -16,12 +17,17 @@ const dateStr = post.data.date.toLocaleDateString('en-US', {
   month: 'short',
   day: 'numeric',
 });
+const cover = post.data.cover ? getResponsiveImage(post.data.cover) : null;
 ---
 
 <article class="card fade-in w-full">
-  {post.data.cover && (
+  {post.data.cover && cover && (
     <img
       src={post.data.cover}
+      srcset={cover.srcset}
+      sizes="(max-width: 640px) 100vw, (max-width: 1024px) 90vw, 944px"
+      width={cover.width}
+      height={cover.height}
       alt=""
       class="mb-6 aspect-[21/9] w-full rounded-xl object-cover"
       loading="lazy"

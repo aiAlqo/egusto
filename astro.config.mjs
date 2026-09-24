@@ -5,6 +5,9 @@ import tailwindcss from '@tailwindcss/vite';
 
 import sitemap from '@astrojs/sitemap';
 
+import { unified } from '@astrojs/markdown-remark';
+import { rehypeImageDimensions } from './src/lib/rehype-image-dimensions.mjs';
+
 // https://astro.build/config
 export default defineConfig({
   output: 'static',
@@ -14,5 +17,9 @@ export default defineConfig({
     plugins: [tailwindcss()]
   },
 
-  integrations: [sitemap()]
+  integrations: [sitemap()],
+
+  markdown: {
+    processor: unified({ rehypePlugins: [rehypeImageDimensions] })
+  }
 });

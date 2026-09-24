@@ -1,5 +1,6 @@
 ---
 import type { CollectionEntry } from 'astro:content';
+import { getResponsiveImage } from '../lib/image-dimensions';
 
 interface Props {
   product: CollectionEntry<'products'>;
@@ -7,12 +8,17 @@ interface Props {
 
 const { product } = Astro.props;
 const { title, description, price, image, downloadUrl, buyLink } = product.data;
+const productImage = image ? getResponsiveImage(image) : null;
 ---
 
 <div class="card fade-in flex flex-col">
-  {image && (
+  {image && productImage && (
     <img
       src={image}
+      srcset={productImage.srcset}
+      sizes="(max-width: 640px) 100vw, (max-width: 1024px) 45vw, 300px"
+      width={productImage.width}
+      height={productImage.height}
       alt=""
       class="mb-4 aspect-video w-full rounded-xl object-cover"
       loading="lazy"

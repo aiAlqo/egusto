@@ -2,6 +2,7 @@
 import { getCollection, render } from 'astro:content';
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import TagPill from '../../components/TagPill.astro';
+import { getResponsiveImage } from '../../lib/image-dimensions';
 
 export async function getStaticPaths() {
   const posts = await getCollection('posts', ({ data }) =>
@@ -44,6 +45,8 @@ const blogPostingSchema = {
   },
   mainEntityOfPage: { '@type': 'WebPage', '@id': canonicalUrl },
 };
+
+const cover = post.data.cover ? getResponsiveImage(post.data.cover) : null;
 ---
 
 <BaseLayout
@@ -61,9 +64,13 @@ const blogPostingSchema = {
         </div>
       )}
     </header>
-    {post.data.cover && (
+    {post.data.cover && cover && (
       <img
         src={post.data.cover}
+        srcset={cover.srcset}
+        sizes="(max-width: 768px) 100vw, 736px"
+        width={cover.width}
+        height={cover.height}
         alt=""
         class="mb-10 aspect-video w-full rounded-2xl object-cover"
       />

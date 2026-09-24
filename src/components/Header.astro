@@ -1,4 +1,6 @@
 ---
+import { getImageDimensions } from '../lib/image-dimensions';
+
 const navItems = [
   { href: '/', label: 'Home' },
   { href: '/store', label: 'Store' },
@@ -6,12 +8,20 @@ const navItems = [
 ];
 
 const currentPath = Astro.url.pathname;
+const logo = getImageDimensions('/brand/logo-lookup.png');
+const banner = getImageDimensions('/brand/banner.jpg');
 ---
 
 <header class="sticky top-0 z-50 border-b border-white/5 bg-claude-dark/95 backdrop-blur">
   <div class="mx-auto flex max-w-5xl items-center justify-between px-4 py-5">
     <a href="/" class="block overflow-hidden rounded-lg">
-      <img src="/brand/logo-lookup.png" alt="egusto" class="h-9 w-auto" />
+      <img
+        src="/brand/logo-lookup.png"
+        alt="egusto"
+        width={logo?.width}
+        height={logo?.height}
+        class="h-9 w-auto"
+      />
     </a>
     <nav class="flex gap-6 text-sm">
       {navItems.map((item) => {
@@ -33,5 +43,7 @@ const currentPath = Astro.url.pathname;
 <img
   src="/brand/banner.jpg"
   alt=""
+  width={banner?.width}
+  height={banner?.height}
   class="h-28 w-full object-cover object-bottom sm:h-36"
 />
