@@ -26,7 +26,7 @@ draft: boolean
 ---
 ```
 
-### Store / Claude Skills
+### Skill-Store / Claude Skills
 
 The store's products are mostly downloadable Claude Skill `.md` files — free or paid.
 
