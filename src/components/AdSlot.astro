@@ -1,0 +1,26 @@
+---
+import { AD_CLIENT } from '../lib/ad-config.mjs';
+
+interface Props {
+  slot: string;
+  format?: string;
+  label?: string;
+}
+
+const { slot, format = 'auto', label = 'Advertisement' } = Astro.props;
+---
+
+<div class="card not-prose">
+  <p class="mb-3 text-center text-xs font-medium uppercase tracking-wide text-claude-muted">
+    {label}
+  </p>
+  <ins
+    class="adsbygoogle"
+    style="display:block"
+    data-ad-client={AD_CLIENT}
+    data-ad-slot={slot}
+    data-ad-format={format}
+    data-full-width-responsive="true"
+    is:inline
+  ></ins>
+</div>

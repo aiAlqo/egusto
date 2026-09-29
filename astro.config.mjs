@@ -7,6 +7,7 @@ import sitemap from '@astrojs/sitemap';
 
 import { unified } from '@astrojs/markdown-remark';
 import { rehypeImageDimensions } from './src/lib/rehype-image-dimensions.mjs';
+import { rehypeInjectInbodyAds } from './src/lib/rehype-inject-inbody-ads.mjs';
 
 // https://astro.build/config
 export default defineConfig({
@@ -20,6 +21,6 @@ export default defineConfig({
   integrations: [sitemap()],
 
   markdown: {
-    processor: unified({ rehypePlugins: [rehypeImageDimensions] })
+    processor: unified({ rehypePlugins: [rehypeImageDimensions, rehypeInjectInbodyAds] })
   }
 });

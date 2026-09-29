@@ -2,6 +2,8 @@
 import { getCollection, render } from 'astro:content';
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import TagPill from '../../components/TagPill.astro';
+import AdSlot from '../../components/AdSlot.astro';
+import { SIDEBAR_SLOT } from '../../lib/ad-config.mjs';
 import { getResponsiveImage } from '../../lib/image-dimensions';
 
 export async function getStaticPaths() {
@@ -54,29 +56,45 @@ const cover = post.data.cover ? getResponsiveImage(post.data.cover) : null;
   description={post.data.description}
   structuredData={blogPostingSchema}
 >
-  <article class="mx-auto max-w-3xl px-4 py-16">
-    <header class="mb-10 text-center">
-      <h1 class="text-3xl font-semibold text-claude-cream sm:text-4xl">{post.data.title}</h1>
-      <p class="mt-3 text-sm text-claude-muted">{dateStr}</p>
-      {post.data.tags.length > 0 && (
-        <div class="mt-4 flex justify-center gap-2">
-          {post.data.tags.map((tag) => <TagPill tag={tag} />)}
-        </div>
+  <div class="mx-auto max-w-6xl px-4 py-16 lg:grid lg:grid-cols-[300px_1fr] lg:items-start lg:gap-10">
+    <aside class="hidden lg:sticky lg:top-24 lg:block lg:self-start">
+      <AdSlot slot={SIDEBAR_SLOT} />
+    </aside>
+    <article class="mx-auto max-w-3xl">
+      <header class="mb-10 text-center">
+        <h1 class="text-3xl font-semibold text-claude-cream sm:text-4xl">{post.data.title}</h1>
+        <p class="mt-3 text-sm text-claude-muted">{dateStr}</p>
+        {post.data.tags.length > 0 && (
+          <div class="mt-4 flex justify-center gap-2">
+            {post.data.tags.map((tag) => <TagPill tag={tag} />)}
+          </div>
+        )}
+      </header>
+      {post.data.cover && cover && (
+        <img
+          src={post.data.cover}
+          srcset={cover.srcset}
+          sizes="(max-width: 768px) 100vw, 736px"
+          width={cover.width}
+          height={cover.height}
+          alt=""
+          class="mb-10 aspect-video w-full rounded-2xl object-cover"
+        />
       )}
-    </header>
-    {post.data.cover && cover && (
-      <img
-        src={post.data.cover}
-        srcset={cover.srcset}
-        sizes="(max-width: 768px) 100vw, 736px"
-        width={cover.width}
-        height={cover.height}
-        alt=""
-        class="mb-10 aspect-video w-full rounded-2xl object-cover"
-      />
-    )}
-    <div class="prose-post">
-      <Content />
-    </div>
-  </article>
+      <div class="prose-post">
+        <Content />
+      </div>
+    </article>
+  </div>
+  <script is:inline>
+    (function () {
+      document.querySelectorAll('ins.adsbygoogle').forEach(() => {
+        try {
+          (window.adsbygoogle = window.adsbygoogle || []).push({});
+        } catch (e) {
+          // adsbygoogle not ready / blocked (ad blockers, offline dev, CSP) — ignore.
+        }
+      });
+    })();
+  </script>
 </BaseLayout>
