@@ -9,9 +9,20 @@ interface Props {
 const { product } = Astro.props;
 const { title, description, price, image, downloadUrl, buyLink } = product.data;
 const productImage = image ? getResponsiveImage(image) : null;
+const isPaid = Boolean(buyLink) && !downloadUrl;
 ---
 
-<div class="card fade-in flex flex-col">
+<div
+  class:list={[
+    'card fade-in flex flex-col',
+    isPaid && 'border-claude-accent/40 shadow-[0_0_32px_-8px_rgba(217,119,87,0.35)]',
+  ]}
+>
+  {isPaid && (
+    <span class="mb-3 w-fit rounded-full bg-claude-accent px-2.5 py-0.5 text-xs font-semibold uppercase tracking-wide text-claude-dark">
+      Premium
+    </span>
+  )}
   {image && productImage && (
     <img
       src={image}
@@ -20,7 +31,10 @@ const productImage = image ? getResponsiveImage(image) : null;
       width={productImage.width}
       height={productImage.height}
       alt=""
-      class="mb-4 aspect-video w-full rounded-xl object-cover"
+      class:list={[
+        'mb-4 w-full rounded-xl object-cover',
+        isPaid ? 'aspect-square' : 'aspect-video',
+      ]}
       loading="lazy"
     />
   )}

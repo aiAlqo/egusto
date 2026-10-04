@@ -3,9 +3,10 @@ import { getCollection } from 'astro:content';
 import BaseLayout from '../layouts/BaseLayout.astro';
 import ProductCard from '../components/ProductCard.astro';
 
-const products = (await getCollection('products')).sort(
-  (a, b) => Number(b.data.featured) - Number(a.data.featured)
-);
+const byFeatured = (a, b) => Number(b.data.featured) - Number(a.data.featured);
+const allProducts = await getCollection('products');
+const paidProducts = allProducts.filter((p) => p.data.buyLink && !p.data.downloadUrl).sort(byFeatured);
+const freeProducts = allProducts.filter((p) => !(p.data.buyLink && !p.data.downloadUrl)).sort(byFeatured);
 ---
 
 <BaseLayout
@@ -18,11 +19,23 @@ const products = (await getCollection('products')).sort(
       Claude Skills we've built and use ourselves — some free to download, some available as
       paid templates.
     </p>
-    {products.length > 0 ? (
-      <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-        {products.map((product) => <ProductCard product={product} />)}
+    {paidProducts.length > 0 && (
+      <div class="mb-16">
+        <h2 class="mb-6 text-xl font-semibold text-claude-cream">Paid skills</h2>
+        <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+          {paidProducts.map((product) => <ProductCard product={product} />)}
+        </div>
       </div>
-    ) : (
+    )}
+    {freeProducts.length > 0 && (
+      <div>
+        <h2 class="mb-6 text-xl font-semibold text-claude-cream">Free downloads</h2>
+        <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+          {freeProducts.map((product) => <ProductCard product={product} />)}
+        </div>
+      </div>
+    )}
+    {allProducts.length === 0 && (
       <p class="text-claude-muted">No products yet — check back soon.</p>
     )}
   </section>
