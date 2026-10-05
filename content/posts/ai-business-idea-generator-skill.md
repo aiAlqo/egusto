@@ -130,12 +130,6 @@ Go to Settings > Capabilities in Claude, click "Upload skill" in the Skills sect
 
 The idea generator decides *what* to sell and *to whom*. The listbuilder then finds real companies and decision-makers matching that buyer and scores them into a prospect list for outreach.
 
-## Download both free Claude skills and run them today
+## Get both skills and run them today
 
-Together, these two skills cover the hardest early steps of a one-person AI business: deciding what to sell, then finding your first buyers. Both skill files are **free downloads on this website**:
-
-[Download pd-ai-business-idea-generator (free)](/store)
-
-[Download pd-listbuilder (free)](/store)
-
-Both skills were created by **Patrick Dang**, and all credit goes to him. Watch [his video](https://youtu.be/YFlCDHYsWyg?si=UlKeQxPeKpIoxY3V) for the full walkthrough, then run the skill yourself.
+Together, these two skills cover the hardest early steps of a one-person AI business: deciding what to sell, then finding your first buyers. Both were created by **Patrick Dang**, and all credit goes to him. Get them from his page at [Founder X](https://founderx.net/start/bizideagen-listbuilder), and watch [his video](https://youtu.be/YFlCDHYsWyg?si=UlKeQxPeKpIoxY3V) for the full walkthrough.
