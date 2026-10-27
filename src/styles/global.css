@@ -1,115 +1,135 @@
 @import "tailwindcss";
 @import "@fontsource-variable/inter";
+@import "@fontsource-variable/newsreader/opsz.css";
+@import "@fontsource-variable/newsreader/opsz-italic.css";
 
+/* Palette is taken from the egusto logo and banner: cream paper, deep indigo ink, amber mark. */
 @theme {
-  --color-claude-dark: #0f0f0e;
-  --color-claude-dark-alt: #1a1a18;
-  --color-claude-surface: #1f1f1d;
-  --color-claude-cream: #f5f4ef;
-  --color-claude-muted: #a8a29e;
-  --color-claude-accent: #d97757;
-  --color-claude-accent-hover: #e68b6f;
+  --color-paper: #fbf7eb; /* matches the logo PNG background so it sits flush */
+  --color-paper-alt: #efe9da;
+  --color-rule: #ddd5c3;
+  --color-ink: #1d1838;
+  --color-muted: #5c5672;
+  --color-indigo: #3a2a7d;
+  --color-indigo-deep: #241957;
+  --color-orange: #f2a01e;
+  --color-orange-deep: #9a5205;
 
   --font-sans: "Inter Variable", ui-sans-serif, system-ui, sans-serif;
+  --font-serif: "Newsreader Variable", ui-serif, Georgia, serif;
 }
 
 @layer base {
   body {
-    @apply bg-claude-dark text-claude-cream font-sans antialiased;
+    @apply bg-paper text-ink font-sans antialiased;
   }
 
   ::selection {
-    @apply bg-claude-accent/30 text-claude-cream;
+    @apply bg-orange/30 text-ink;
+  }
+
+  :focus-visible {
+    @apply outline-2 outline-offset-2 outline-indigo;
   }
 }
 
 @layer components {
-  .card {
-    @apply rounded-2xl border border-white/5 bg-claude-surface p-6 transition duration-300;
-  }
-
-  .card:hover {
-    @apply -translate-y-0.5 shadow-[0_0_24px_-6px_rgba(217,119,87,0.35)];
-  }
-
-  .fade-in {
-    animation: fade-in 0.6s ease-out both;
+  /* Small uppercase label used for dates, sections and metadata. */
+  .kicker {
+    @apply font-sans text-xs font-medium uppercase tracking-[0.12em] text-muted;
   }
 
   .prose-post {
-    @apply mx-auto max-w-[65ch] leading-relaxed text-claude-cream/90;
+    @apply mx-auto max-w-[38rem] font-serif text-[1.1875rem] leading-[1.7] text-ink;
   }
 
-  .prose-post :is(h2, h3) {
-    @apply mt-10 mb-4 font-semibold text-claude-cream;
+  .prose-post h2 {
+    @apply mt-14 mb-4 font-serif text-[1.75rem] leading-tight font-semibold text-ink;
+  }
+
+  .prose-post h3 {
+    @apply mt-10 mb-3 font-serif text-[1.3rem] leading-snug font-semibold text-ink;
   }
 
   .prose-post p {
-    @apply mb-5;
+    @apply mb-6;
   }
 
   .prose-post ul,
   .prose-post ol {
-    @apply mb-5 ml-6 list-outside space-y-2;
+    @apply mb-6 ml-6 list-outside space-y-2;
   }
 
   .prose-post ul {
-    @apply list-disc;
+    @apply list-disc marker:text-orange;
   }
 
   .prose-post ol {
-    @apply list-decimal;
+    @apply list-decimal marker:font-sans marker:text-sm marker:text-muted;
   }
 
   .prose-post a {
-    @apply text-claude-accent underline underline-offset-2 hover:text-claude-accent-hover;
+    @apply text-indigo underline decoration-orange decoration-2 underline-offset-[3px] hover:text-indigo-deep hover:decoration-indigo;
+  }
+
+  .prose-post blockquote {
+    @apply my-8 border-l-2 border-orange pl-5 italic text-muted;
+  }
+
+  .prose-post hr {
+    @apply my-12 border-rule;
   }
 
   .prose-post code {
-    @apply rounded bg-claude-dark-alt px-1.5 py-0.5 text-sm;
+    @apply rounded bg-paper-alt px-1.5 py-0.5 font-mono text-[0.85em];
   }
 
   .prose-post pre {
-    @apply mb-5 overflow-x-auto rounded-xl border border-white/5 bg-claude-dark-alt p-4 text-sm leading-relaxed;
+    @apply mb-6 overflow-x-auto rounded-md bg-ink p-4 font-mono text-sm leading-relaxed text-paper;
   }
 
   .prose-post pre code {
-    @apply bg-transparent p-0;
+    @apply bg-transparent p-0 text-inherit;
   }
 
   .prose-post img {
-    @apply my-8 w-full rounded-2xl border border-white/5;
+    @apply my-10 w-full rounded-sm;
   }
 
   .prose-post table {
-    @apply mb-5 block w-full overflow-x-auto border-collapse text-sm;
+    @apply mb-6 block w-full overflow-x-auto border-collapse font-sans text-sm;
   }
 
   .prose-post th,
   .prose-post td {
-    @apply border border-white/10 px-3 py-2 text-left align-top;
+    @apply border-b border-rule px-3 py-2 text-left align-top;
   }
 
   .prose-post th {
-    @apply bg-claude-dark-alt font-semibold text-claude-cream;
+    @apply border-b-2 border-ink font-semibold text-ink;
   }
 
   .prose-post strong {
-    @apply text-claude-cream;
+    @apply font-semibold text-ink;
+  }
+
+  .prose-post details {
+    @apply mb-4 border-b border-rule pb-4;
+  }
+
+  .prose-post summary {
+    @apply cursor-pointer font-semibold;
   }
 
   summary::-webkit-details-marker {
     display: none;
   }
-}
 
-@keyframes fade-in {
-  from {
-    opacity: 0;
-    transform: translateY(8px);
+  .ad-box {
+    @apply border-y border-rule py-4 font-sans;
   }
-  to {
-    opacity: 1;
-    transform: translateY(0);
+
+  .btn {
+    @apply inline-block rounded-sm bg-indigo px-4 py-2 font-sans text-sm font-medium text-paper transition-colors hover:bg-indigo-deep;
   }
 }

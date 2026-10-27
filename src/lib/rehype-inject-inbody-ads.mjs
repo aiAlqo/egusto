@@ -27,7 +27,7 @@ function buildAdNode(slotId) {
       {
         type: 'element',
         tagName: 'div',
-        properties: { className: ['card'] },
+        properties: { className: ['ad-box'] },
         children: [
           {
             type: 'element',
@@ -35,7 +35,7 @@ function buildAdNode(slotId) {
             properties: {
               className: [
                 'mb-3', 'text-center', 'text-xs', 'font-medium',
-                'uppercase', 'tracking-wide', 'text-claude-muted',
+                'uppercase', 'tracking-wide', 'text-muted',
               ],
             },
             children: [{ type: 'text', value: 'Advertisement' }],

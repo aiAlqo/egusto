@@ -13,30 +13,26 @@ const freeProducts = allProducts.filter((p) => !(p.data.buyLink && !p.data.downl
   title="Skill-Store"
   description="Claude Skills and digital resources — free downloads and paid templates."
 >
-  <section class="mx-auto max-w-5xl px-4 py-16">
-    <h1 class="mb-3 text-3xl font-semibold text-claude-cream">Skill-Store</h1>
-    <p class="mb-10 max-w-2xl text-claude-muted">
-      Claude Skills we've built and use ourselves — some free to download, some available as
-      paid templates.
+  <section class="mx-auto max-w-5xl px-4 pt-12 pb-16 sm:pt-16">
+    <h1 class="font-serif text-4xl font-semibold sm:text-5xl">Skill-Store</h1>
+    <p class="mt-4 max-w-2xl text-lg text-muted">
+      Claude Skills I've built and use myself. Each one comes with a write-up on the blog
+      explaining how it works, so you can read before you download.
     </p>
     {paidProducts.length > 0 && (
-      <div class="mb-16">
-        <h2 class="mb-6 text-xl font-semibold text-claude-cream">Paid skills</h2>
-        <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-          {paidProducts.map((product) => <ProductCard product={product} />)}
-        </div>
+      <div class="mt-14">
+        <h2 class="kicker mb-2">Paid</h2>
+        {paidProducts.map((product) => <ProductCard product={product} />)}
       </div>
     )}
     {freeProducts.length > 0 && (
-      <div>
-        <h2 class="mb-6 text-xl font-semibold text-claude-cream">Free downloads</h2>
-        <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-          {freeProducts.map((product) => <ProductCard product={product} />)}
-        </div>
+      <div class="mt-14">
+        <h2 class="kicker mb-2">Free</h2>
+        {freeProducts.map((product) => <ProductCard product={product} />)}
       </div>
     )}
     {allProducts.length === 0 && (
-      <p class="text-claude-muted">No products yet — check back soon.</p>
+      <p class="mt-10 text-muted">Nothing here yet.</p>
     )}
   </section>
 </BaseLayout>

@@ -12,61 +12,46 @@ const productImage = image ? getResponsiveImage(image) : null;
 const isPaid = Boolean(buyLink) && !downloadUrl;
 ---
 
-<div
+<article
   class:list={[
-    'card fade-in flex flex-col',
-    isPaid && 'border-claude-accent/40 shadow-[0_0_32px_-8px_rgba(217,119,87,0.35)]',
+    'grid gap-6 border-t border-rule py-8',
+    image && productImage ? 'sm:grid-cols-[13rem_1fr] sm:gap-8' : '',
   ]}
 >
-  {isPaid && (
-    <span class="mb-3 w-fit rounded-full bg-claude-accent px-2.5 py-0.5 text-xs font-semibold uppercase tracking-wide text-claude-dark">
-      Premium
-    </span>
-  )}
   {image && productImage && (
     <img
       src={image}
       srcset={productImage.srcset}
-      sizes="(max-width: 640px) 100vw, (max-width: 1024px) 45vw, 300px"
+      sizes="(max-width: 640px) 100vw, 208px"
       width={productImage.width}
       height={productImage.height}
       alt=""
-      class:list={[
-        'mb-4 w-full rounded-xl object-cover',
-        isPaid ? 'aspect-square' : 'aspect-video',
-      ]}
+      class="aspect-square w-full max-w-[13rem] rounded-sm object-cover"
       loading="lazy"
     />
   )}
-  <h2 class="text-lg font-semibold text-claude-cream">{title}</h2>
-  <p class="mt-2 flex-1 text-sm text-claude-muted">{description}</p>
-  {guide && (
-    <a
-      href={guide}
-      class="mt-4 inline-block text-sm font-medium text-claude-accent hover:text-claude-accent-hover"
-    >
-      Read the guide →
-    </a>
-  )}
-  <div class="mt-6 flex items-center justify-between">
-    <span class="text-sm font-medium text-claude-cream">{price}</span>
-    {downloadUrl ? (
-      <a
-        href={downloadUrl}
-        download
-        class="rounded-full bg-claude-accent px-4 py-2 text-sm font-medium text-claude-dark transition hover:bg-claude-accent-hover"
-      >
-        Download
-      </a>
-    ) : buyLink ? (
-      <a
-        href={buyLink}
-        target="_blank"
-        rel="noopener"
-        class="rounded-full bg-claude-accent px-4 py-2 text-sm font-medium text-claude-dark transition hover:bg-claude-accent-hover"
-      >
-        {price === 'Free' ? 'Get it free' : `Buy — ${price}`}
-      </a>
-    ) : null}
+  <div class="flex max-w-[60ch] flex-col">
+    <h3 class="font-serif text-2xl leading-snug font-semibold text-balance">{title}</h3>
+    <p class="mt-3 leading-relaxed text-muted">{description}</p>
+    <div class="mt-6 flex flex-wrap items-center gap-x-6 gap-y-3">
+      {downloadUrl ? (
+        <a href={downloadUrl} download class="btn">
+          Download
+        </a>
+      ) : buyLink ? (
+        <a href={buyLink} target="_blank" rel="noopener" class="btn">
+          {isPaid && price !== 'Free' ? `Buy for ${price}` : 'Get it free'}
+        </a>
+      ) : null}
+      {guide && (
+        <a
+          href={guide}
+          class="text-sm text-indigo underline decoration-orange decoration-2 underline-offset-4 hover:decoration-indigo"
+        >
+          Read the guide
+        </a>
+      )}
+      {!isPaid && <span class="text-sm text-muted">Free</span>}
+    </div>
   </div>
-</div>
+</article>

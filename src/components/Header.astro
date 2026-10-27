@@ -2,36 +2,40 @@
 import { getImageDimensions } from '../lib/image-dimensions';
 
 const navItems = [
-  { href: '/', label: 'Home' },
+  { href: '/', label: 'Writing' },
   { href: '/store/', label: 'Skill-Store' },
   { href: '/about/', label: 'About' },
 ];
 
 const currentPath = Astro.url.pathname;
 const logo = getImageDimensions('/brand/logo-lookup.png');
-const banner = getImageDimensions('/brand/banner.jpg');
 ---
 
-<header class="sticky top-0 z-50 border-b border-white/5 bg-claude-dark/95 backdrop-blur">
-  <div class="mx-auto flex max-w-5xl items-center justify-between px-4 py-5">
-    <a href="/" class="block overflow-hidden rounded-lg">
+<header class="border-b border-rule bg-paper">
+  <div class="mx-auto flex max-w-5xl items-center justify-between gap-4 px-4 py-2">
+    <a href="/" class="-ml-3 block shrink-0">
       <img
         src="/brand/logo-lookup.png"
         alt="egusto"
         width={logo?.width}
         height={logo?.height}
-        class="h-9 w-auto"
+        class="h-14 w-auto"
       />
     </a>
-    <nav class="flex gap-6 text-sm">
+    <nav class="flex gap-5 text-sm sm:gap-7">
       {navItems.map((item) => {
-        const isActive = item.href === '/' ? currentPath === '/' : currentPath.startsWith(item.href);
+        const isActive =
+          item.href === '/'
+            ? currentPath === '/' || currentPath.startsWith('/posts/')
+            : currentPath.startsWith(item.href);
         return (
           <a
             href={item.href}
-            class={`transition hover:text-claude-accent-hover ${
-              isActive ? 'text-claude-accent' : 'text-claude-muted'
-            }`}
+            aria-current={isActive ? 'page' : undefined}
+            class:list={[
+              'border-b-2 py-1 transition-colors hover:text-ink',
+              isActive ? 'border-orange text-ink' : 'border-transparent text-muted',
+            ]}
           >
             {item.label}
           </a>
@@ -40,10 +44,3 @@ const banner = getImageDimensions('/brand/banner.jpg');
     </nav>
   </div>
 </header>
-<img
-  src="/brand/banner.jpg"
-  alt=""
-  width={banner?.width}
-  height={banner?.height}
-  class="h-28 w-full object-cover object-bottom sm:h-36"
-/>

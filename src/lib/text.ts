@@ -2,7 +2,8 @@ export function extractSnippet(markdown: string, maxLength = 280): string {
   const firstParagraph = markdown
     .split(/\n\s*\n/)
     .map((block) => block.trim())
-    .find((block) => block.length > 0 && !block.startsWith('#')) ?? '';
+    // Skip headings and short byline-style lines such as "*By Pentora*".
+    .find((block) => block.length > 40 && !block.startsWith('#')) ?? '';
 
   const plainText = firstParagraph
     .replace(/\[([^\]]+)\]\([^)]+\)/g, '$1')
