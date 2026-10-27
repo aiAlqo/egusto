@@ -40,14 +40,14 @@ const cover = post.data.cover ? getResponsiveImage(post.data.cover) : null;
     )}
   </div>
   <h2 class="mt-3 text-2xl font-semibold text-claude-cream">
-    <a href={`/posts/${post.id}`} class="hover:text-claude-accent-hover">
+    <a href={`/posts/${post.id}/`} class="hover:text-claude-accent-hover">
       {post.data.title}
     </a>
   </h2>
   <p class="mt-3 max-w-[65ch] text-claude-muted">{snippet}</p>
 
   <a
-    href={`/posts/${post.id}`}
+    href={`/posts/${post.id}/`}
     class="mt-4 inline-block text-sm font-medium text-claude-accent hover:text-claude-accent-hover"
   >
     Read more →

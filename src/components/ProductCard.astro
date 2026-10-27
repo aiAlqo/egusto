@@ -7,7 +7,7 @@ interface Props {
 }
 
 const { product } = Astro.props;
-const { title, description, price, image, downloadUrl, buyLink } = product.data;
+const { title, description, price, image, downloadUrl, guide, buyLink } = product.data;
 const productImage = image ? getResponsiveImage(image) : null;
 const isPaid = Boolean(buyLink) && !downloadUrl;
 ---
@@ -40,6 +40,14 @@ const isPaid = Boolean(buyLink) && !downloadUrl;
   )}
   <h2 class="text-lg font-semibold text-claude-cream">{title}</h2>
   <p class="mt-2 flex-1 text-sm text-claude-muted">{description}</p>
+  {guide && (
+    <a
+      href={guide}
+      class="mt-4 inline-block text-sm font-medium text-claude-accent hover:text-claude-accent-hover"
+    >
+      Read the guide →
+    </a>
+  )}
   <div class="mt-6 flex items-center justify-between">
     <span class="text-sm font-medium text-claude-cream">{price}</span>
     {downloadUrl ? (
@@ -57,7 +65,7 @@ const isPaid = Boolean(buyLink) && !downloadUrl;
         rel="noopener"
         class="rounded-full bg-claude-accent px-4 py-2 text-sm font-medium text-claude-dark transition hover:bg-claude-accent-hover"
       >
-        Buy — {price}
+        {price === 'Free' ? 'Get it free' : `Buy — ${price}`}
       </a>
     ) : null}
   </div>

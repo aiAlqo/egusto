@@ -60,6 +60,8 @@ This isn't just theory. Rakuten reported using Skills to compress a day of finan
 
 That's the real unlock: turning one person's know-how into something an AI applies automatically, at scale, for anyone on the team — not because the model got smarter overnight, but because someone wrote the recipe card once.
 
+It works at the scale of one person too. The [AI business idea generator skill](/posts/ai-business-idea-generator-skill/) packages Patrick Dang's coaching method (an Ikigai interview, live market research and the Offer Triangle) so anyone can run it and walk away with a concrete offer to sell.
+
 ![A person at a desk writing a card by lamplight, with a card-catalog box of filed notes in front of them and glowing documents drifting into the dark — writing the recipe card once, reused ever after.](/images/posts/how-claude-skills-work-body-end.jpg)
 
 ## The bigger idea

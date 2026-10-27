@@ -2,6 +2,7 @@
 title: "DTC LLM Visibility Skill"
 description: "A free Claude Skill that runs the 5-step process for auditing and improving how often ChatGPT, Claude, Perplexity, and Gemini recommend your DTC brand — audit, roadmap, content, and a monthly tracker generator."
 price: "Free"
+guide: "/posts/how-i-help-customers-become-visible-to-llms/"
 downloadUrl: "/skills/dtc-llm-visibility.zip"
 featured: true
 ---

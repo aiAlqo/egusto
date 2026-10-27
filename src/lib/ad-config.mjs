@@ -3,5 +3,6 @@
 // in the AdSense dashboard — that's the only change needed anywhere.
 export const AD_CLIENT = 'ca-pub-7253643000981858';
 export const SIDEBAR_SLOT = 'PLACEHOLDER_SIDEBAR_SLOT';
-export const INBODY_SLOT_1 = 'PLACEHOLDER_INBODY_SLOT_1';
-export const INBODY_SLOT_2 = 'PLACEHOLDER_INBODY_SLOT_2';
+// In-article (fluid) unit; reused for both in-body positions.
+export const INBODY_SLOT_1 = '4102369799';
+export const INBODY_SLOT_2 = '4102369799';

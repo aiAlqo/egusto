@@ -2,6 +2,7 @@
 title: "Father-Child Silhouette Video Skill (30-Second AI Reels)"
 description: "A Claude skill that creates an original ~30-second vertical father-and-son or father-and-daughter silhouette video with a painted sky, a new random scene every run, and a ready-to-post MP4 for Reels, TikTok and YouTube Shorts."
 price: "$19"
+guide: "/posts/ai-father-child-silhouette-shorts/"
 image: "/images/products/father-child-silhouette-video-skill.jpg"
 buyLink: "https://aloisseneka.gumroad.com/l/30seconddadreels"
 featured: true

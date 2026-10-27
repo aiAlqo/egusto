@@ -25,6 +25,6 @@ The pattern that's worked best for us:
 
 The interesting part isn't any single skill — it's that the library compounds. A skill for structuring a discovery-call summary feeds into a skill for drafting a scope doc, which feeds into a skill for generating a first-draft SOW. None of these steps individually save that much time. Together, they've cut our proposal turnaround from days to hours, and — just as importantly — they've made the output more consistent across who on the team is doing the work.
 
-We're starting to share a few of these directly — the first one, a discovery-call summarizer, is [free to download from the store](/store) if you want to see what one actually looks like in practice.
+We're starting to share a few of these directly — the first one, a discovery-call summarizer, is [free to download from the store](/store) if you want to see what one actually looks like in practice. If you're earlier than that and still deciding what to sell, start with the [AI business idea generator skill](/posts/ai-business-idea-generator-skill/).
 
 If you're running AI-adjacent consulting work and still copy-pasting prompts between chats, that's the first thing worth fixing. Not a bigger model. A place for the good prompts to live.

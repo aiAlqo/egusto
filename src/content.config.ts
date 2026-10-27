@@ -21,6 +21,7 @@ const products = defineCollection({
     price: z.string(),
     image: z.string().optional(),
     downloadUrl: z.string().optional(),
+    guide: z.string().optional(),
     buyLink: z.string().url().optional(),
     featured: z.boolean().default(false),
   }),

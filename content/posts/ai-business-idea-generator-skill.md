@@ -124,7 +124,7 @@ No. It deliberately rejects generic niches like "AI consulting." You sell a serv
 
 ### How do I install a Claude skill?
 
-Go to Settings > Capabilities in Claude, click "Upload skill" in the Skills section, add the ZIP file and switch it on ([Claude Help Center](https://support.claude.com/en/articles/12512180-using-skills-in-claude)). Enable web search, because the research stages depend on it.
+Go to Settings > Capabilities in Claude, click "Upload skill" in the Skills section, add the ZIP file and switch it on ([Claude Help Center](https://support.claude.com/en/articles/12512180-using-skills-in-claude)). New to skills? [How Claude Skills work](/posts/how-claude-skills-work/) explains what happens when one loads. Enable web search, because the research stages depend on it.
 
 ### What's the difference between pd-ai-business-idea-generator and pd-listbuilder?
 

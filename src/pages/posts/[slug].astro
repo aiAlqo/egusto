@@ -24,7 +24,7 @@ const dateStr = post.data.date.toLocaleDateString('en-US', {
   day: 'numeric',
 });
 
-const canonicalUrl = new URL(`/posts/${post.id}`, Astro.site).toString();
+const canonicalUrl = new URL(`/posts/${post.id}/`, Astro.site).toString();
 const logoUrl = new URL('/brand/app-icon.png', Astro.site).toString();
 const imageUrl = new URL(
   post.data.cover ?? '/brand/banner.jpg',

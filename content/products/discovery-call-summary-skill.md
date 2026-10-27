@@ -2,6 +2,7 @@
 title: "Discovery Call Summary Skill"
 description: "A Claude Skill that turns raw discovery-call notes or a transcript into a structured account-plan summary — process inventory, pain points, constraints, and next steps."
 price: "Free"
+guide: "/posts/claude-skills-turn-client-work-into-systems/"
 downloadUrl: "/skills/discovery-call-summary.md"
 featured: true
 ---
